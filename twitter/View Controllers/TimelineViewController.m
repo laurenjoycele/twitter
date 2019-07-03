@@ -16,8 +16,8 @@
 
 @property(nonatomic, strong) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (nonatomic, strong) UIRefreshControl *refreshControl;
-//@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -44,9 +44,14 @@
         }
     }];
     
-    //refresh
-    //UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    //initialize refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    //bind action to refresh control
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    //insert refresh control in table view
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tweets.count;
 }
@@ -87,7 +92,24 @@
     return cell;
 }
 
-
+//**************** methods for refresh ********************
+//implements action to update table view
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
+        if (tweets) {
+            self.tweets = tweets;
+            [self.tableView reloadData];
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            for (Tweet *tweet in tweets) {
+                NSString *text = tweet.text;
+                NSLog(@"%@", text);
+            }
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
 
 
 
