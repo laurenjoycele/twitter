@@ -20,6 +20,7 @@
 		977A3D9222CACE8600557FF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 977A3D9122CACE8600557FF4 /* User.m */; };
 		977A3D9522CACFF700557FF4 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 977A3D9422CACFF700557FF4 /* Tweet.m */; };
 		977A3D9B22CAE17800557FF4 /* TweetCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 977A3D9A22CAE17800557FF4 /* TweetCellTableViewCell.m */; };
+		97FCBCF122CD405100372303 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FCBCF022CD405100372303 /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		977A3D9422CACFF700557FF4 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		977A3D9922CAE17800557FF4 /* TweetCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCellTableViewCell.h; sourceTree = "<group>"; };
 		977A3D9A22CAE17800557FF4 /* TweetCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCellTableViewCell.m; sourceTree = "<group>"; };
+		97FCBCEF22CD405100372303 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		97FCBCF022CD405100372303 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 				6AD2790520BCC0380085BC29 /* LoginViewController.m */,
 				6AD2790720BCC04D0085BC29 /* TimelineViewController.h */,
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
+				97FCBCEF22CD405100372303 /* ComposeViewController.h */,
+				97FCBCF022CD405100372303 /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				977A3D9B22CAE17800557FF4 /* TweetCellTableViewCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				977A3D9222CACE8600557FF4 /* User.m in Sources */,
+				97FCBCF122CD405100372303 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				977A3D9522CACFF700557FF4 /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,

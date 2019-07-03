@@ -34,6 +34,7 @@
     //make API request
     // Get timeline. Comes back and executes this code until new data is ready
     //API manager calls completion handler passing back data
+  
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.tweets = tweets; //view controller stores data passed into completion handler
