@@ -15,13 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *textBox;
+@property (weak, nonatomic) IBOutlet UIImageView *profPic;
 
 @property (weak, nonatomic) IBOutlet UILabel *retweetCount;
 @property (weak, nonatomic) IBOutlet UILabel *faveCount;
 @property (weak, nonatomic) IBOutlet UIButton *retweetedButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoritedButton;
-
-
 @end
 
 NS_ASSUME_NONNULL_END

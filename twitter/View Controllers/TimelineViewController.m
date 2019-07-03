@@ -12,10 +12,11 @@
 #import "TweetCellTableViewCell.h"
 #import "Tweet.h"
 
+
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) NSArray *tweets;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView; //View controller has tableView as a subview
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
@@ -26,14 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //view controlled becomes its dataSource and delegate
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    // Get timeline
+    //make API request
+    // Get timeline. Comes back and executes this code until new data is ready
+    //API manager calls completion handler passing back data
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            self.tweets = tweets;
-            [self.tableView reloadData];
+            self.tweets = tweets; //view controller stores data passed into completion handler
+            [self.tableView reloadData]; //gets new info
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (Tweet *tweet in tweets) {
                 NSString *text = tweet.text;
@@ -49,15 +53,18 @@
     //bind action to refresh control
     [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     //insert refresh control in table view
+    
+    
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.tweets.count;
+    return self.tweets.count; //number of items returned from API
 }
 
 
 
+//returns an instance of the custom cell w/ reuse identifier w/ it's elements populated w/data at index asked for
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //reuse cells
     TweetCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCellTableViewCell"];
@@ -71,6 +78,8 @@
     cell.textBox.text = tweet.text;
     cell.retweetCount.text = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     cell.faveCount.text = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
+    
+    //do we have to do this part?
     //cell.retweetedButton
     UIImage *retweetImage = [UIImage imageNamed:@"retweet-icon.png"];
     [cell.retweetedButton setImage:retweetImage forState:UIControlStateNormal];
@@ -80,15 +89,12 @@
     
     //dynamic row height
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     //use for profile pic
-    /*
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = //[baseURLString stringByAppendingString:posterURLString];
-    NSLog(@"%@", fullPosterURLString);
-    NSURL *posterURL = [NSURL  URLWithString:fullPosterURLString];*/
-    //cell..image = tweet[@"profile_image_url_https"];
-    //[cell.posterView setImageWithURL:posterURL];
+    NSString *ProfileURLString = tweet.user.profilePicture;
+    NSURL *posterURL = [NSURL  URLWithString:ProfileURLString];
+    [cell.profPic setImageWithURL:posterURL];
+    
     return cell;
 }
 
