@@ -72,6 +72,8 @@
     TweetCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCellTableViewCell"];
     Tweet *tweet = self.tweets[indexPath.row];
     
+    cell.tweet = tweet;
+    
     //outlets & data
     cell.authorLabel.text = tweet.user.name;
     cell.screenName.text = tweet.user.screenName;
@@ -81,13 +83,6 @@
     cell.retweetCount.text = [NSString stringWithFormat:@"%d",tweet.retweetCount];
     cell.faveCount.text = [NSString stringWithFormat:@"%d",tweet.favoriteCount];
     
-    //do we have to do this part?
-    //cell.retweetedButton
-    UIImage *retweetImage = [UIImage imageNamed:@"retweet-icon.png"];
-    [cell.retweetedButton setImage:retweetImage forState:UIControlStateNormal];
-    //cell.favoritedButton
-    UIImage *favoritedImage = [UIImage imageNamed:@"favor-icon.png"];
-    [cell.favoritedButton setImage:favoritedImage forState:UIControlStateNormal];
     
     //dynamic row height
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -99,6 +94,7 @@
     
     return cell;
 }
+
 
 //composing a tweet
 - (void)didTweet:(Tweet *)tweet{

@@ -7,8 +7,10 @@
 //
 
 #import "TweetCellTableViewCell.h"
+#import "Tweet.h"
 
 @implementation TweetCellTableViewCell
+@synthesize favoritedButton;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -20,5 +22,22 @@
 
     // Configure the view for the selected state
 }
+
+- (IBAction)didTapLike:(id)sender {
+    self.tweet.favorited = YES;
+    self.tweet.favoriteCount += 1;
+    
+    //update UIView after user taps like button
+    self.faveCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+    //[self refreshData];
+    
+    
+}
+
+//update all UIviews after user taps like button
+/*- (void) refreshData{
+    NSString *faveCountString = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+   
+}*/
 
 @end

@@ -117,6 +117,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1B-j0-Kjg">
                                                     <rect key="frame" x="211" y="69" width="30" height="30"/>
                                                     <state key="normal" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="pl5-6c-w3d" eventType="touchUpInside" id="BKR-CP-bvd"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOC-ge-S83">
                                                     <rect key="frame" x="77" y="27" width="242" height="34"/>
@@ -166,10 +169,9 @@
                                             <outlet property="authorLabel" destination="FkL-PB-f37" id="TVo-jc-stH"/>
                                             <outlet property="dateLabel" destination="p66-6M-5H0" id="R17-XM-XnB"/>
                                             <outlet property="faveCount" destination="oT7-b6-UB8" id="0R9-vM-FJl"/>
-                                            <outlet property="favoritedButton" destination="F1B-j0-Kjg" id="xrO-Ec-t68"/>
+                                            <outlet property="favoritedButton" destination="F1B-j0-Kjg" id="M7J-rA-U7G"/>
                                             <outlet property="profPic" destination="vkT-au-2Jn" id="HVx-99-G7A"/>
                                             <outlet property="retweetCount" destination="dpe-5M-qqx" id="5zZ-fO-RyZ"/>
-                                            <outlet property="retweetedButton" destination="s7y-FL-j2l" id="5Sa-R1-ddN"/>
                                             <outlet property="screenName" destination="P0j-6p-Q5i" id="c3F-bS-Xjk"/>
                                             <outlet property="textBox" destination="KOC-ge-S83" id="ZJA-64-Le6"/>
                                         </connections>
