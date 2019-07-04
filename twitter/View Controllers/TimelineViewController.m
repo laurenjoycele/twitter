@@ -12,6 +12,8 @@
 #import "TweetCellTableViewCell.h"
 #import "Tweet.h"
 #import "ComposeViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
@@ -95,6 +97,9 @@
     return cell;
 }
 
+- (void)updateTweet: (TweetCellTableViewCell *)cell{
+    
+}
 
 //composing a tweet
 - (void)didTweet:(Tweet *)tweet{
@@ -141,6 +146,17 @@
     composeController.delegate = self;
 }
 
+
+//need help understanding this
+- (IBAction)loggingOut:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [[APIManager shared] logout];
+}
+    
 
 
 @end
