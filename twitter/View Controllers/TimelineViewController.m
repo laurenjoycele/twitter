@@ -11,9 +11,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "TweetCellTableViewCell.h"
 #import "Tweet.h"
+#import "ComposeViewController.h"
 
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 
 @property(nonatomic, strong) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView; //View controller has tableView as a subview
@@ -99,6 +100,12 @@
     return cell;
 }
 
+//composing a tweet
+- (void)didTweet:(Tweet *)tweet{
+    [self.tableView reloadData];
+}
+
+
 //**************** methods for refresh ********************
 //implements action to update table view
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
@@ -132,6 +139,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
 }
 
 

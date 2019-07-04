@@ -7,8 +7,11 @@
 //
 
 #import "ComposeViewController.h"
+#import "APIManager.h"
+#import "Tweet.h"
 
 @interface ComposeViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *tweetTextBox;
 
 @end
 
@@ -21,7 +24,20 @@
 }
 
 - (IBAction)tweetSomething:(id)sender {
+    [[APIManager shared] postStatusWithText:_tweetTextBox.text completion:^(Tweet * myTweet, NSError* error) {
+        if(error){
+            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+        }
+        else{
+            [self.delegate didTweet:myTweet];
+            NSLog(@"Compose Tweet Success!");
+            [self cancelTweet:self];
+        }
+    }];
+    
 }
+
+
 - (IBAction)cancelTweet:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }

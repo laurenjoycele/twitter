@@ -188,7 +188,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="tOQ-uY-Rlo"/>
-                        <barButtonItem key="rightBarButtonItem" title="Feather" id="WOe-DT-T1p">
+                        <barButtonItem key="rightBarButtonItem" title="Feather" image="edit-icon" id="WOe-DT-T1p">
                             <connections>
                                 <segue destination="Vbf-oK-vAy" kind="presentation" id="4pU-cG-zv8"/>
                             </connections>
@@ -209,6 +209,15 @@
                     <view key="view" contentMode="scaleToFill" id="Ih7-Qv-2uC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Y9-1nx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vYG-bY-4wl"/>
                     </view>
@@ -224,10 +233,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tweetTextBox" destination="MEs-Y9-1nx" id="8mq-2P-3De"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75K-pp-iV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="-640"/>
+            <point key="canvasLocation" x="1660" y="-640.02998500749629"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
@@ -268,6 +280,7 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
