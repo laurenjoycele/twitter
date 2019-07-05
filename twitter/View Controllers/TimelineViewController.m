@@ -147,7 +147,7 @@
 }
 
 
-//need help understanding this
+//need help understanding this 
 - (IBAction)loggingOut:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     

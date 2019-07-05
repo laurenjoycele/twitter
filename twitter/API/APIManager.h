@@ -18,5 +18,9 @@
 
 //post something
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
+//favorite a post
+- (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+- (void)unfavorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;
+
 
 @end

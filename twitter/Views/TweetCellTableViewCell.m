@@ -8,6 +8,7 @@
 
 #import "TweetCellTableViewCell.h"
 #import "Tweet.h"
+#import "APIManager.h"
 
 @implementation TweetCellTableViewCell
 @synthesize favoritedButton;
@@ -24,14 +25,37 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
-    self.tweet.favorited = YES;
-    self.tweet.favoriteCount += 1;
-    
-    //update UIView after user taps like button
-    self.faveCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
-    //[self refreshData];
-    
-    
+    if (self.tweet.favorited){
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount -= 1;
+        self.faveCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+            }
+        }];
+        
+    }
+    else{
+        self.tweet.favorited = YES;
+        self.tweet.favoriteCount += 1;
+        
+        //update UIView after user taps like button
+        self.faveCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
+        
+        
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+            }
+        }];
+    }
 }
 
 //update all UIviews after user taps like button
