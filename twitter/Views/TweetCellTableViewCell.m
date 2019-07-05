@@ -25,7 +25,7 @@
 }
 
 - (IBAction)didTapLike:(id)sender {
-    if (self.tweet.favorited){
+    if (self.tweet.favorited == YES){
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
         self.faveCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
@@ -57,6 +57,41 @@
         }];
     }
 }
+
+- (IBAction)didTapRetweet:(id)sender {
+    //undo retweet
+    if (self.tweet.retweeted == YES){
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -= 1;
+        self.retweetCount.text = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error unretweeting: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+            }
+        }];
+    }
+    //retweet
+    else{
+        self.tweet.retweeted = YES;
+        self.tweet.retweetCount += 1;
+        self.retweetCount.text = [NSString stringWithFormat:@"%i", self.tweet.retweetCount];
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+            if(error){
+                NSLog(@"Error retweeting: %@", error.localizedDescription);
+            }
+            else{
+                NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+            }
+        }];
+        
+    }
+    
+    
+}
+
 
 //update all UIviews after user taps like button
 /*- (void) refreshData{
