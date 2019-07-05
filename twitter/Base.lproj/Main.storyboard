@@ -110,8 +110,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7y-FL-j2l">
-                                                    <rect key="frame" x="119" y="69" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7y-FL-j2l">
+                                                    <rect key="frame" x="119" y="68" width="30" height="30"/>
                                                     <state key="normal" image="retweet-icon"/>
                                                     <connections>
                                                         <action selector="didTapRetweet:" destination="pl5-6c-w3d" eventType="touchUpInside" id="pk5-sG-SOu"/>
@@ -174,6 +174,7 @@
                                             <outlet property="faveCount" destination="oT7-b6-UB8" id="0R9-vM-FJl"/>
                                             <outlet property="favoritedButton" destination="F1B-j0-Kjg" id="M7J-rA-U7G"/>
                                             <outlet property="profPic" destination="vkT-au-2Jn" id="HVx-99-G7A"/>
+                                            <outlet property="retweetButton" destination="s7y-FL-j2l" id="Tsj-2X-FRo"/>
                                             <outlet property="retweetCount" destination="dpe-5M-qqx" id="5zZ-fO-RyZ"/>
                                             <outlet property="screenName" destination="P0j-6p-Q5i" id="c3F-bS-Xjk"/>
                                             <outlet property="textBox" destination="KOC-ge-S83" id="ZJA-64-Le6"/>
